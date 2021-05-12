@@ -60,6 +60,15 @@ A continuación se describirá el paso a paso del proceso de implementación. Co
 ```javascript
 import ** as yappy from "yappy-node-sdk";
 ```
+**TypeScript**
+```TypeScript
+import {
+  PagosBgUrlBody,
+  PaymentInfo,
+  ValidatorParams,
+etc..
+} from "yappy-node-sdk/dist/types/common/main";
+```
 
 **3.2)** Inicialice el cliente.
 ```
@@ -148,11 +157,20 @@ yappy.setButton(false,'<id de tu form>','brand');
 <!-- Contenedor donde se mostrara el Botón de Pago Yappy -->
  <div id=“Yappy_Checkout_Button”></div>
  ```
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![Visual del Botón de Pago Yappy](https://www.bgeneral.com/wp-content/uploads/2021/04/boton%20de%20pago%20libreria%20php%20(4).png )
 
 #### Personalización del Botón de Pago Yappy
 
 Opcionalmente, puede seleccionar el color del botón que se ajuste mejor al estilo de su tienda. Recomendamos la opción predeterminada.
+
+![Brand (predeterminada)](https://www.bgeneral.com/wp-content/uploads/2020/10/Boton%20de%20pago%20woocommerce/brand.png)"Brand (predeterminada)"
+
+![Dark](https://www.bgeneral.com/wp-content/uploads/2020/10/Boton%20de%20pago%20woocommerce/dark.png)"Dark"
+
+![Light](https://www.bgeneral.com/wp-content/uploads/2020/10/Boton%20de%20pago%20woocommerce/light.png)"Light"
+
+![White](https://www.bgeneral.com/wp-content/uploads/2020/10/Boton%20de%20pago%20woocommerce/white.png)"White"
+
 
 ### 5. Configuración de notificación instantánea de pago (opcional)
 
@@ -168,8 +186,9 @@ El estado del pedido se puede encontrar en los query params en la variable **sta
 
  >Nota: El Banco también le notificará el estado exitoso de un pedido por medio de una confirmación enviada por correo electrónico.
 
- A continuación se encuentra un ejemplo de su implementación en *Express:* **JavaScript**
+ A continuación se encuentra un ejemplo de su implementación en *Express:*
 
+  **JavaScript**
 ```javascript
 app.post(
 "/api/pagosbg",
@@ -177,6 +196,19 @@ app.post(
 const success = yappyClient.validateHash(req.query);
 if(success){
 //your business logic
+    }
+  }
+);
+```
+
+**TypeScript**
+```TypeScript
+app.post(
+  "/api/pagosbg",
+  (req: Request<any, any, any, ValidatorParams>, res: Response) => {
+    const success = yappyClient.validateHash(req.query);
+    if (success) {
+      //Your bussiness logic
     }
   }
 );
