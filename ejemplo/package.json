@@ -1,0 +1,25 @@
+{
+  "name": "express-example",
+  "version": "1.0.0",
+  "description": "Express Server with Yappy Node SDK",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc",
+    "start": "tsc && node output/index.js"
+  },
+  "author": "Abraham Vega",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "yappy-node-back-sdk": "file:yappy-node-back-sdk-1.0.0.tgz"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@types/node": "^14.14.32",
+    "typescript": "^4.2.3"
+  }
+}
